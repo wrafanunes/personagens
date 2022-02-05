@@ -1,10 +1,16 @@
 <p style="color: green"><%= notice %></p>
+<div class="jumbotron">
+    <h1 class="display-4">
+    <%= @character.first_name %>
+    <%= @character.last_name %>
+  </h1>
+  <p class="lead">
+    Origin: <%= @character.origin %>  
+  </p>
+  <br>
 
-<%= render @character %>
+  <%= link_to "Edit this character", edit_character_path(@character), class: "btn btn-secondary" %> |
+  <%= link_to "Back to characters", characters_path, class:"btn btn-dark" %>
 
-<div>
-  <%= link_to "Edit this character", edit_character_path(@character) %> |
-  <%= link_to "Back to characters", characters_path %>
-
-  <%= button_to "Destroy this character", @character, method: :delete %>
+  <%= button_to "Destroy this character", @character, method: :delete, class: "btn btn-danger" %>
 </div>
