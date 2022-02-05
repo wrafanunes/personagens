@@ -1,32 +1,32 @@
 <%= form_with(model: character) do |form| %>
-  <% if character.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(character.errors.count, "error") %> prohibited this character from being saved:</h2>
+<% if character.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(character.errors.count, "error") %> prohibited this character from being saved:</h2>
 
-      <ul>
-        <% character.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% character.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
-  </div>
+<div>
+  <%= form.label :first_name, style: "display: block", class: "form-label" %>
+  <%= form.text_field :first_name, class: "form-control" %>
+</div>
 
-  <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
-  </div>
+<div>
+  <%= form.label :last_name, style: "display: block", class: "form-label" %>
+  <%= form.text_field :last_name, class: "form-control" %>
+</div>
 
-  <div>
-    <%= form.label :origin, style: "display: block" %>
-    <%= form.text_field :origin %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+<div>
+  <%= form.label :origin, style: "display: block", class: "form-label" %>
+  <%= form.text_field :origin, class: "form-control" %>
+</div>
+<br>
+<div>
+  <%= form.submit class: 'btn btn-primary' %>
+</div>
 <% end %>
