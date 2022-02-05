@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'home/about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 # definir uma página como inicial
-root 'home#index'
+root 'characters#index'
   # Defines the root path route ("/")
   # root "articles#index"
 end
