@@ -16,6 +16,27 @@
         <li class="nav-item">
           <%= link_to 'New Character', new_character_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign In',  new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= button_to 'Sign Out',  destroy_user_session_path, method: :delete, style: "background: none!important;
+          border: none;
+          padding: 0!important;
+          /*optional*/
+          font-family: arial, sans-serif;
+          /*input has OS specific font-family*/
+          color: gray;
+          text-decoration: none;
+          cursor: pointer;
+          margin-top: 8px" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Edit Profile',  edit_user_registration_path, class: "nav-link" %>
+        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
