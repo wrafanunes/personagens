@@ -1,5 +1,7 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: %i[ show edit update destroy ]
+  # se o usuário não estiver logado, nenhuma ação é permitida, exceto index e show
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /characters or /characters.json
   def index
