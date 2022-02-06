@@ -25,8 +25,16 @@
   <%= form.label :origin, style: "display: block", class: "form-label" %>
   <%= form.text_field :origin, class: "form-control" %>
 </div>
-<br>
+
 <div>
-  <%= form.submit class: 'btn btn-primary' %>
+  <%= form.number_field :user_id, id: :character_user_id, class: "form-control", value: current_user.id, type: :hidden %>
 </div>
-<% end %>
+<!-- o código abaixo exibirá o endereço na memória que armazena o usuário
+  <%= current_user %> -->
+<!-- inspecionar usuário
+  <%= current_user.inspect %> -->
+  <br>
+  <div>
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+  <% end %>

@@ -64,7 +64,8 @@ class CharactersController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    #parâmetros são as propriedades da classe
     def character_params
-      params.require(:character).permit(:first_name, :last_name, :origin)
+      params.require(:character).permit(:first_name, :last_name, :origin, :user_id)
     end
 end
