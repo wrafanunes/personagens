@@ -2,6 +2,9 @@ class CharactersController < ApplicationController
   before_action :set_character, only: %i[ show edit update destroy ]
   # se o usuário não estiver logado, nenhuma ação é permitida, exceto index e show
   before_action :authenticate_user!, except: [:index, :show]
+  # antes de executar as funções, verificar se o usuário tem as devidas permissões, mas apenas para edit,
+  # update e destroy
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /characters or /characters.json
   def index
@@ -14,7 +17,9 @@ class CharactersController < ApplicationController
 
   # GET /characters/new
   def new
-    @character = Character.new
+    # @character = Character.new
+    #criando personagem associado ao usuário atual
+    @character = current_user.characters.build
   end
 
   # GET /characters/1/edit
@@ -23,8 +28,8 @@ class CharactersController < ApplicationController
 
   # POST /characters or /characters.json
   def create
-    @character = Character.new(character_params)
-
+    #@character = Character.new(character_params)
+    @character = current_user.characters.build(character_params)
     respond_to do |format|
       if @character.save
         format.html { redirect_to character_url(@character), notice: "Character was successfully created." }
@@ -57,6 +62,11 @@ class CharactersController < ApplicationController
       format.html { redirect_to characters_url, notice: "Character was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+  # quando o usuário tentar editar um personagem, verificar se ele tem permissão
+  def correct_user
+    @character = current_user.characters.find_by(id: params[:id])
+    redirect_to characters_path, notice: "Not Authorized to edit this character - Sucker!" if @character.nil?
   end
 
   private
